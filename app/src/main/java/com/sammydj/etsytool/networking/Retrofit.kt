@@ -1,20 +1,21 @@
 package com.sammydj.etsytool.networking
 
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-interface EtsyService {
-    @GET("shops")
-    suspend fun getShopList(): List<ShopRemote>
-}
-
 class Retrofit {
 
-    val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.etsy.com/v3/")
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://openapi.etsy.com/v2/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
-    val service = retrofit.create(EtsyService::class.java)
+    val service: EtsyService = retrofit.create(EtsyService::class.java)
+
+    interface EtsyService {
+        @GET("shops?api_key=eeomp93xigld7jajqpvcyro5")
+        suspend fun getShopList(): retrofit2.Response<Results>?
+    }
 }

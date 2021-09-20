@@ -4,9 +4,8 @@ import com.sammydj.etsytool.database.ShopLocal
 import com.squareup.moshi.Json
 
 data class ShopRemote(
-
     @field:Json(name = "shop_id")
-    val shopId: Int,
+    val shopId: Int? = 0,
     @field:Json(name = "shop_name")
     val shopName: String,
     @field:Json(name = "user_id")
@@ -64,7 +63,7 @@ data class ShopRemote(
     @field:Json(name = "languages")
     var languages: List<String>,
     @field:Json(name = "upcoming_local_event_id")
-    var upcomingLocalEventId: Int,
+    var upcomingLocalEventId: Int?,
     @field:Json(name = "icon_url_fullxfull")
     var iconUrlFullxfull: String,
     @field:Json(name = "is_using_structured_policies")

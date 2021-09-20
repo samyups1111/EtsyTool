@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.sammydj.etsytool.converters.Converters
 
-@Database(entities = [ShopLocal::class], version = 2, exportSchema = false)
+@Database(entities = [ShopLocal::class], version = 5, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class ShopDatabase: RoomDatabase() {
     abstract val shopDao : ShopDao

@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name = "ETSY_API_KEY"
+            android:value = "${ETSY_API_KEY}"/>
     </application>
 
 </manifest>

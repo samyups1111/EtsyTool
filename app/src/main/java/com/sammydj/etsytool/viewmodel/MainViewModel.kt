@@ -14,9 +14,17 @@ class MainViewModel(private val repository: MainRepository): ViewModel() {
         }
     }
 
-    val ShopList = repository.shopList
+    fun refreshNetworkCall() = viewModelScope.launch {
+        repository.refreshShopList()
+    }
 
-    class MainViewModelFactory(val repository: MainRepository): ViewModelProvider.Factory {
+    var list = repository.getListFromDatabase()
+
+    fun clearDatabase() = viewModelScope.launch {
+        repository.clearDatabase()
+    }
+
+    class MainViewModelFactory(private val repository: MainRepository): ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

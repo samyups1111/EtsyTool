@@ -1,10 +1,7 @@
 package com.sammydj.etsytool.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ShopDao {
@@ -12,5 +9,8 @@ interface ShopDao {
     fun getShops(): LiveData<List<ShopLocal>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(shops: List<ShopLocal>)
+    suspend fun insertAll(vararg shops: ShopLocal)
+
+    @Query("DELETE FROM ShopLocal")
+    suspend fun deleteAll()
 }
