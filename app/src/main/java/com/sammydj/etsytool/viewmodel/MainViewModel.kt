@@ -1,21 +1,33 @@
 package com.sammydj.etsytool.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.sammydj.etsytool.repository.MainRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: MainRepository): ViewModel() {
 
-    init {
+    private val _wordToSearch = MutableLiveData<String>()
+    val wordToSearch : LiveData<String>
+        get() = _wordToSearch
+
+    private val start = 1
+
+    fun isLastPage(): Boolean {
+        return repository.networkListSize <= start
+    }
+
+    fun loadData(start: Int) {
         viewModelScope.launch {
-            repository.refreshShopList()
+            refreshNetworkCall(wordToSearch.value ?: "", start)
         }
     }
 
-    fun refreshNetworkCall() = viewModelScope.launch {
-        repository.refreshShopList()
+    fun setWordToSearch(word: String? = "") {
+        _wordToSearch.value = word ?: ""
+    }
+
+    fun refreshNetworkCall(word: String = "", start: Int) = viewModelScope.launch {
+        repository.refreshShopList(word, start)
     }
 
     var list = repository.getListFromDatabase()

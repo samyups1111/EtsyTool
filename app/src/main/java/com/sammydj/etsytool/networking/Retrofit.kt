@@ -4,6 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 class Retrofit {
 
@@ -15,7 +16,12 @@ class Retrofit {
     val service: EtsyService = retrofit.create(EtsyService::class.java)
 
     interface EtsyService {
-        @GET("shops?api_key=eeomp93xigld7jajqpvcyro5")
-        suspend fun getShopList(): retrofit2.Response<Results>?
+        @GET("shops?offset=start&api_key=")
+        suspend fun getShopList(
+            @Query("shop_name")
+            shopName: String,
+            @Query("start")
+            start: Int,
+        ): retrofit2.Response<Results>?
     }
 }

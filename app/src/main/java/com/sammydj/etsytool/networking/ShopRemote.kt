@@ -7,77 +7,77 @@ data class ShopRemote(
     @field:Json(name = "shop_id")
     val shopId: Int? = 0,
     @field:Json(name = "shop_name")
-    val shopName: String,
+    val shopName: String?,
     @field:Json(name = "user_id")
-    val userId: Int,
+    val userId: Int?,
     @field:Json(name = "creation_tzs")
-    val creationTzs: Float,
+    val creationTzs: Float?,
     @field:Json(name = "title")
-    var title: String,
+    var title: String?,
     @field:Json(name = "announcement")
-    var announcement: String,
+    var announcement: String?,
     @field:Json(name = "currency_code")
-    var currencyCode: String,
+    var currencyCode: String?,
     @field:Json(name = "is_vacation")
-    var isVacation: Boolean,
+    var isVacation: Boolean?,
     @field:Json(name = "vacation_message")
-    var vacationMessage: String,
+    var vacationMessage: String?,
     @field:Json(name = "sale_message")
-    var saleMessage: String,
+    var saleMessage: String?,
     @field:Json(name = "digital_sale_message")
-    var digitalSaleMessage: String,
+    var digitalSaleMessage: String?,
     @field:Json(name = "last_updated_tsz")
-    var lastUpdatedTsz: Float,
+    var lastUpdatedTsz: Float?,
     @field:Json(name = "listing_active_count")
-    var listingActiveCount: Int,
+    var listingActiveCount: Int?,
     @field:Json(name = "digital_listing_count")
-    var digitalListingCount: Int,
+    var digitalListingCount: Int?,
     @field:Json(name = "login_name")
-    var loginName: String,
+    var loginName: String?,
     @field:Json(name = "accepts_custom_requests")
-    var acceptsCustomRequests: Boolean,
+    var acceptsCustomRequests: Boolean?,
     @field:Json(name = "policy_welcome")
-    var policyWelcome: String,
+    var policyWelcome: String?,
     @field:Json(name = "policy_payment")
-    var policyPayment: String,
+    var policyPayment: String?,
     @field:Json(name = "policy_shipping")
-    var policyShipping: String,
+    var policyShipping: String?,
     @field:Json(name = "policy_refunds")
-    var policyRefunds: String,
+    var policyRefunds: String?,
     @field:Json(name = "policy_additional")
-    var policyAdditional: String,
+    var policyAdditional: String?,
     @field:Json(name = "policy_seller_info")
-    var policySellerInfo: String,
+    var policySellerInfo: String?,
     @field:Json(name = "policy_updated_tsz")
-    var policyUpdatedTsz: Float,
+    var policyUpdatedTsz: Float?,
     @field:Json(name = "policy_has_private_receipt_info")
-    var policyHasPrivateReceiptInfo: Boolean,
+    var policyHasPrivateReceiptInfo: Boolean?,
     @field:Json(name = "vacation_autoreply")
-    var vacationAutoreply: String,
+    var vacationAutoreply: String?,
     @field:Json(name = "url")
-    var url: String,
+    var url: String?,
     @field:Json(name = "image_url_760x100")
-    var imageUrl760x100: String,
+    var imageUrl760x100: String?,
     @field:Json(name = "num_favorers")
-    var numFavorers: Int,
+    var numFavorers: Int?,
     @field:Json(name = "languages")
-    var languages: List<String>,
+    var languages: List<String>?,
     @field:Json(name = "upcoming_local_event_id")
     var upcomingLocalEventId: Int?,
     @field:Json(name = "icon_url_fullxfull")
-    var iconUrlFullxfull: String,
+    var iconUrlFullxfull: String?,
     @field:Json(name = "is_using_structured_policies")
-    var isUsingStructuredPolicies: Boolean,
+    var isUsingStructuredPolicies: Boolean?,
     @field:Json(name = "has_onboarded_structured_policies")
-    var hasOnboardedStructuredPolicies: Boolean,
+    var hasOnboardedStructuredPolicies: Boolean?,
     @field:Json(name = "has_unstructured_policies")
-    var hasUnstructuredPolicies: Boolean,
+    var hasUnstructuredPolicies: Boolean?,
     @field:Json(name = "policy_privacy")
-    var policyPrivacy: String,
+    var policyPrivacy: String?,
     @field:Json(name = "use_new_inventory_endpoints")
-    var useNewInventoryEndpoints: Boolean,
+    var useNewInventoryEndpoints: Boolean?,
     @field:Json(name = "include_dispute_form_link")
-    var includeDisputeFormLink: Boolean
+    var includeDisputeFormLink: Boolean?
 )
 
 fun List<ShopRemote>.asDatabaseModel(): List<ShopLocal> {

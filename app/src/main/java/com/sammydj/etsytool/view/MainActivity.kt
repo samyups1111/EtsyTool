@@ -4,37 +4,39 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sammydj.etsytool.MainApplication
 import com.sammydj.etsytool.R
+import com.sammydj.etsytool.view.recyclerview.RecyclerViewPaginator
 import com.sammydj.etsytool.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var button : Button
-    private lateinit var mainTextView : TextView
+    private lateinit var searchButton : Button
     private lateinit var recyclerView : RecyclerView
     private lateinit var deleteAllButton : Button
+    private lateinit var searchEditText: EditText
     private val viewModel : MainViewModel by lazy {
         ViewModelProvider(this, MainViewModel.MainViewModelFactory((application as MainApplication).repository)).get(MainViewModel::class.java)
     }
     private lateinit var recyclerViewAdapter : MainRecyclerViewAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        mainTextView = findViewById(R.id.main_textview)
-        button = findViewById(R.id.button)
+        searchButton = findViewById(R.id.search_button)
         recyclerView = findViewById(R.id.recycler_view)
         deleteAllButton = findViewById(R.id.delete_all)
+        searchEditText = findViewById(R.id.search_edittext)
         recyclerViewAdapter = MainRecyclerViewAdapter()
 
-        setButtons()
+        setSearchButton()
+        setSearchEditText()
         setDeleteButton()
         attachRecyclerViewAdapter()
         loadData()
@@ -48,29 +50,47 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setButtons() {
-        button.setOnClickListener {
-            viewModel.refreshNetworkCall()
+    private fun setSearchEditText() {
+        searchEditText.setOnClickListener {
+            searchEditText.text.clear()
+        }
+    }
+
+    private fun setSearchButton() {
+        searchButton.setOnClickListener {
+            val wordToSearch = searchEditText.text.toString()
+            viewModel.setWordToSearch(wordToSearch)
+            viewModel.clearDatabase()
+            viewModel.refreshNetworkCall(viewModel.wordToSearch.value!!, 0)
             Log.d("TAG", "MA setButtons clicked")
         }
-
     }
 
     private fun loadData() {
 
         viewModel.list.observe(this, { shopList ->
+            Log.d("TAG", "MA loadData1: shoplist.size = ${shopList.size}")
 
             if (shopList != null) {
+                Log.d("TAG", "MA loadData2: shoplist.size = ${shopList.size}")
                 recyclerViewAdapter.updateList(shopList)
-                Log.d("TAG", "MA shopList.size = ${shopList.size}")
-            }
+                recyclerView.addOnScrollListener(object: RecyclerViewPaginator(recyclerView) {
+                    override val isLastPage: Boolean
+                        get() = viewModel.isLastPage()
 
+                    override fun loadMore(start: Int) {
+                        viewModel.loadData(start)
+                        Log.d("TAG", "MA loadMore: start = $start")
+                    }
+                })
+            }
         })
     }
 
     private fun setDeleteButton() {
         deleteAllButton.setOnClickListener {
             viewModel.clearDatabase()
+            searchEditText.text.clear()
         }
     }
 }

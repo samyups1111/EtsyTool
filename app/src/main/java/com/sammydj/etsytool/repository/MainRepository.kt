@@ -13,15 +13,18 @@ class MainRepository(private val retrofit: Retrofit, private val shopDao: ShopDa
 
     fun getListFromDatabase() = Transformations.map(shopDao.getShops()) {it.asDomainModel()}
 
+    var networkListSize = 0
+
     suspend fun clearDatabase() = shopDao.deleteAll()
 
-    suspend fun refreshShopList() {
+    suspend fun refreshShopList(wordToSearch: String, start: Int = 1) {
 
         try {
-            val response: Response<Results>? = retrofit.service.getShopList()
+            val response: Response<Results>? = retrofit.service.getShopList(wordToSearch, start)
             val code = response?.code()
             val body = response?.body()
             val list = body?.results
+            networkListSize = list?.size ?: 0
             Log.d("TAG", "RP1 list.size = ${list?.size}") // 25
 
             if (list != null) {

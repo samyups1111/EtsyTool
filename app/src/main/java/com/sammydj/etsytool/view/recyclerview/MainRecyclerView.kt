@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sammydj.etsytool.R
 import com.sammydj.etsytool.model.Shop
+import com.sammydj.etsytool.view.recyclerview.MainViewHolder
 
 class MainRecyclerViewAdapter: RecyclerView.Adapter<MainViewHolder>() {
 
