@@ -16,11 +16,11 @@ class Retrofit {
     val service: EtsyService = retrofit.create(EtsyService::class.java)
 
     interface EtsyService {
-        @GET("shops?offset=start&api_key=")
+        @GET("shops?limit=25")
         suspend fun getShopList(
             @Query("shop_name")
             shopName: String,
-            @Query("start")
+            @Query("offset")
             start: Int,
         ): retrofit2.Response<Results>?
     }

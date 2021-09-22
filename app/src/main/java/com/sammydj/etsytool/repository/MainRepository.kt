@@ -17,7 +17,8 @@ class MainRepository(private val retrofit: Retrofit, private val shopDao: ShopDa
 
     suspend fun clearDatabase() = shopDao.deleteAll()
 
-    suspend fun refreshShopList(wordToSearch: String, start: Int = 1) {
+    suspend fun refreshShopList(wordToSearch: String, start: Int = 0) {
+        Log.d("TAG", "RP start = $start")
 
         try {
             val response: Response<Results>? = retrofit.service.getShopList(wordToSearch, start)
