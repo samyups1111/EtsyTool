@@ -7,8 +7,8 @@ An app used to search for Etsy shops using the Etsy API. Users can click on the 
 ## Architecture:
 
 * MVVM Architecture:
-  * Model
-  * View
+  * [Model](https://github.com/samyups1111/EtsyTool/tree/main/app/src/main/java/com/sammydj/etsytool/model)
+  * [View](https://github.com/samyups1111/EtsyTool/tree/main/app/src/main/java/com/sammydj/etsytool/view)
   * ViewModel   
   
 ## Libraries
@@ -18,3 +18,7 @@ An app used to search for Etsy shops using the Etsy API. Users can click on the 
 * [Moshi Library](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/networking/Retrofit.kt)
 * Coroutine
 * [Picasso](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/util/BindPictureToImageView.kt)
+
+## Other:
+* [Infinite scroll/Pagination](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/view/mainactivity/recyclerview/RecyclerViewPaginator.kt)
+* [Nested RecyclerViews](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/view/shopactivity/ListingsViewHolder.kt)
