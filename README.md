@@ -13,8 +13,8 @@ An app used to search for Etsy shops using the Etsy API. Users can click on the 
   
 ## Libraries
 
-* Room Persistence Library
-* Retrofit Library
-* Moshi Library
+* [Room Persistence Library](https://github.com/samyups1111/EtsyTool/tree/main/app/src/main/java/com/sammydj/etsytool/database)
+* [Retrofit Library](https://github.com/samyups1111/EtsyTool/tree/main/app/src/main/java/com/sammydj/etsytool/networking)
+* [Moshi Library](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/networking/Retrofit.kt)
 * Coroutine
-* Picasso
+* [Picasso](https://github.com/samyups1111/EtsyTool/blob/main/app/src/main/java/com/sammydj/etsytool/util/BindPictureToImageView.kt)
