@@ -1,6 +1,5 @@
-package com.sammydj.etsytool.networking
+package com.sammydj.etsytool.model.shop
 
-import com.sammydj.etsytool.database.ShopLocal
 import com.squareup.moshi.Json
 
 data class ShopRemote(

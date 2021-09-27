@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.shopactivity.ShopActivity">
+
+    <ImageView
+        android:id="@+id/pic_imageview_shopxml"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_face"
+        android:contentDescription="item sold" />
+
+    <TextView
+        android:id="@+id/shop_name_textview_shopxml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Shop Name"
+        app:layout_constraintEnd_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/pic_imageview_shopxml"/>
+
+    <TextView
+        android:id="@+id/location_textview_shopxml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location Not Found"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_name_textview_shopxml"/>
+
+    <TextView
+        android:id="@+id/listings_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTINGS:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_textview_shopxml"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listings_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/listings_textview"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

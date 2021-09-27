@@ -1,7 +1,6 @@
-package com.sammydj.etsytool.viewmodel
+package com.sammydj.etsytool.view.mainactivity
 
 import androidx.lifecycle.*
-import com.sammydj.etsytool.repository.MainRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: MainRepository): ViewModel() {

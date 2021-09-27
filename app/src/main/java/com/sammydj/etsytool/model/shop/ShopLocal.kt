@@ -1,8 +1,8 @@
-package com.sammydj.etsytool.database
+package com.sammydj.etsytool.model.shop
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sammydj.etsytool.model.Shop
+import com.sammydj.etsytool.model.shop.Shop
 
 @Entity
 data class ShopLocal(
@@ -88,4 +88,47 @@ fun List<ShopLocal>.asDomainModel(): List<Shop> {
             includeDisputeFormLink = it.includeDisputeFormLink
         )
     }
+}
+
+fun ShopLocal.toDomain(): Shop {
+    return Shop(
+        shopId = this.shopId,
+        shopName = this.shopName,
+        userId = this.userId,
+        creationTzs = this.creationTzs,
+        title = this.title,
+        announcement = this.announcement,
+        currencyCode = this.currencyCode,
+        isVacation = this.isVacation,
+        vacationMessage = this.vacationMessage,
+        saleMessage = this.saleMessage,
+        digitalSaleMessage = this.digitalSaleMessage,
+        lastUpdatedTsz = this.lastUpdatedTsz,
+        listingActiveCount = this.listingActiveCount,
+        digitalListingCount = this.digitalListingCount,
+        loginName = this.loginName,
+        acceptsCustomRequests = this.acceptsCustomRequests,
+        policyWelcome = this.policyWelcome,
+        policyPayment = this.policyPayment,
+        policyShipping = this.policyShipping,
+        policyRefunds = this.policyRefunds,
+        policyAdditional = this.policyAdditional,
+        policySellerInfo = this.policySellerInfo,
+        policyUpdatedTsz = this.policyUpdatedTsz,
+        policyHasPrivateReceiptInfo = this.policyHasPrivateReceiptInfo,
+        vacationAutoreply = this.vacationAutoreply,
+        url = this.url,
+        imageUrl760x100 = this.imageUrl760x100,
+        numFavorers = this.numFavorers,
+        languages = this.languages,
+        upcomingLocalEventId = this.upcomingLocalEventId,
+        iconUrlFullxfull = this.iconUrlFullxfull,
+        isUsingStructuredPolicies = this.isUsingStructuredPolicies,
+        hasOnboardedStructuredPolicies = this.hasOnboardedStructuredPolicies,
+        hasUnstructuredPolicies = this.hasUnstructuredPolicies,
+        policyPrivacy = this.policyPrivacy,
+        useNewInventoryEndpoints = this.useNewInventoryEndpoints,
+        includeDisputeFormLink = this.includeDisputeFormLink
+    )
+
 }

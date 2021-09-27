@@ -1,4 +1,4 @@
-package com.sammydj.etsytool.view
+package com.sammydj.etsytool.view.mainactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,18 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sammydj.etsytool.MainApplication
 import com.sammydj.etsytool.R
-import com.sammydj.etsytool.view.recyclerview.RecyclerViewPaginator
-import com.sammydj.etsytool.viewmodel.MainViewModel
+import com.sammydj.etsytool.view.MainRecyclerViewAdapter
+import com.sammydj.etsytool.view.mainactivity.recyclerview.RecyclerViewPaginator
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var searchButton : Button
     private lateinit var recyclerView : RecyclerView
-    private lateinit var deleteAllButton : Button
     private lateinit var searchEditText: EditText
     private lateinit var progressBar : ImageView
     private val viewModel : MainViewModel by lazy {
-        ViewModelProvider(this, MainViewModel.MainViewModelFactory((application as MainApplication).repository)).get(MainViewModel::class.java)
+        ViewModelProvider(this, MainViewModel.MainViewModelFactory((application as MainApplication).mainRepository)).get(
+            MainViewModel::class.java)
     }
     private lateinit var recyclerViewAdapter : MainRecyclerViewAdapter
 
@@ -34,14 +34,12 @@ class MainActivity : AppCompatActivity() {
 
         searchButton = findViewById(R.id.search_button)
         recyclerView = findViewById(R.id.recycler_view)
-        deleteAllButton = findViewById(R.id.delete_all)
         searchEditText = findViewById(R.id.search_edittext)
         progressBar = findViewById(R.id.progress_bar)
         recyclerViewAdapter = MainRecyclerViewAdapter()
 
         setSearchButton()
         setSearchEditText()
-        setDeleteButton()
         attachRecyclerViewAdapter()
         loadData()
     }
@@ -64,7 +62,9 @@ class MainActivity : AppCompatActivity() {
         searchButton.setOnClickListener {
             val wordToSearch = searchEditText.text.toString()
             viewModel.setWordToSearch(wordToSearch)
+            Log.d("TAG", "MA wordToSearch = $wordToSearch")
             viewModel.clearDatabase()
+            Log.d("TAG", "MA wordToSearch = $wordToSearch")
             viewModel.refreshNetworkCall(viewModel.wordToSearch.value!!, 0)
             Log.d("TAG", "MA setButtons clicked")
         }
@@ -93,12 +93,5 @@ class MainActivity : AppCompatActivity() {
                 })
             }
         })
-    }
-
-    private fun setDeleteButton() {
-        deleteAllButton.setOnClickListener {
-            viewModel.clearDatabase()
-            searchEditText.text.clear()
-        }
     }
 }

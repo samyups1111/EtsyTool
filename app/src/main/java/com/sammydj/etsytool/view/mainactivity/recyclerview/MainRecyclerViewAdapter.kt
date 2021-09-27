@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sammydj.etsytool.R
-import com.sammydj.etsytool.model.Shop
-import com.sammydj.etsytool.view.recyclerview.MainViewHolder
+import com.sammydj.etsytool.model.shop.Shop
+import com.sammydj.etsytool.view.mainactivity.recyclerview.MainViewHolder
 
 class MainRecyclerViewAdapter: RecyclerView.Adapter<MainViewHolder>() {
 

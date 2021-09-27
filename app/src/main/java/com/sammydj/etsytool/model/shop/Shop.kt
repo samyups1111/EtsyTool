@@ -1,4 +1,4 @@
-package com.sammydj.etsytool.model
+package com.sammydj.etsytool.model.shop
 
 data class Shop(
     val shopId: Int?,

@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/activity_shop.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/item_view.xml" value="0.1721014492753623" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/listing_image_itemview.xml" value="0.1526268115942029" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/listings_item_view.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/EtsyTool/app/src/main/res/layout/progressbar.xml" value="0.18432971014492755" />
       </map>
     </option>
