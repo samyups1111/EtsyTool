@@ -2,7 +2,7 @@
 
 ## Intro:
 
-An app used to search for Etsy shops using the Etsy API. Users can click on the shops to see all the listings available. 
+WIP. An app used to search for Etsy shops using the Etsy API. Users can click on the shops to see all the listings available. 
 
 ## Architecture:
 
